@@ -1,0 +1,18 @@
+version: '3.5'
+
+networks:
+  quasar_network: {}
+
+services:
+
+  quasar-app:
+    container_name: quasar-app
+    build:
+      context: ./
+    tty: true
+    volumes:
+      - ${PWD}:/app
+    ports:
+      - 9000:9000
+    networks:
+      - quasar_network
