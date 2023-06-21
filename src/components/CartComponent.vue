@@ -4,18 +4,19 @@
     <ul class="cart-items">
       <li v-for="(item, index) in cartItems" :key="index" class="cart-item">
         <div class="item-info">
+          <span class="item-price">{{ item.quantity }}X</span>
           <span class="item-name">{{ item.name }}</span>
-          <span class="item-price">{{ item.quantity }}</span>
+          
         </div>
         <button @click="removeFromCart(index)" class="remove-btn"><i class="fa-solid fa-trash"></i></button>
       </li>
     </ul>
-    <button @click="checkout" :disabled="cartItems.length === 0" class="checkout-btn">Finalizar Compra</button>
+    <button @click="checkout" :disabled="cartItems.length === 0" class="checkout-btn"><i class="fa-solid fa-cart-shopping cart-end"></i>Fechar Pedido</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -29,9 +30,6 @@ const checkout = () => {
   console.log('Compra finalizada!');
   store.commit('checkout');
 };
-
-
-
 </script>
 
 <style lang="sass" scoped>
@@ -41,8 +39,6 @@ const checkout = () => {
   border-radius: 4px
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
   text-align: center
-  justify-content: center
-  align-items: center
 
 .cart-title 
   font-size: 1.5em
@@ -51,12 +47,16 @@ const checkout = () => {
 .cart-items 
   list-style-type: none
   padding: 0
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
 
 .cart-item 
   display: flex
   align-items: center
   justify-content: space-between
   margin-bottom: 10px
+  margin-right: 10px
 
 .item-info 
   display: flex
@@ -68,9 +68,11 @@ const checkout = () => {
 
 .item-price 
   font-size: 0.9em
+  margin-left: 10px
+  margin-right: 10px
 
 .remove-btn 
-  background-color: #ff5858
+  background-color: red
   color: white
   border: none
   border-radius: 4px
@@ -86,7 +88,7 @@ const checkout = () => {
   margin-top: 10px
 
 .checkout-btn 
-  background-color: #4caf50
+  background-color: purple
   color: white
   border: none
   border-radius: 4px
@@ -95,7 +97,14 @@ const checkout = () => {
   cursor: pointer
   margin-top: 20px
 
+  padding: 15px
+  padding-left: 160px
+  padding-right: 160px
+
 .checkout-btn:disabled 
   background-color: gray
   cursor: not-allowed
+
+.cart-end
+  margin-right: 8px
 </style>
