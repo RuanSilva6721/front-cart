@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <img src="../assets/Logo.png" alt="" class="image-main">
     <ProductComponent @add-to-cart="addToCart" />
     <CartComponent :cartItems="cartItems" :removeFromCart="removeFromCart" :checkout="checkout" />    
   </div>

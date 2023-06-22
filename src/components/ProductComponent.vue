@@ -22,9 +22,9 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const availableProducts = ref([
-  { id: 1, name: 'Produto 1', price: 9.99 },
-  { id: 2, name: 'Produto 2', price: 19.99 },
-  { id: 3, name: 'Produto 3', price: 14.99 }
+  { id: 1, name: 'Produto 1' },
+  { id: 2, name: 'Produto 2' },
+  { id: 3, name: 'Produto 3' }
 ]);
 
 const addToCart = (product) => {
